@@ -9,3 +9,7 @@
 -   Magnet
 -   VirtualBox
 -   Local By Flywheel
+
+### Update Karabiner-Elements
+
+Map caps_lock to CMD+CONTROL+OPTION+SHIFT
