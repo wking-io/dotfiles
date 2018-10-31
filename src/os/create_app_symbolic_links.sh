@@ -22,7 +22,7 @@ create_symlinks() {
         sourceFile="$(cd .. && pwd)/$i"
 
         if [ $i = "editor/settings.json" ] then
-          targetFile="$HOME/Library/Application\ Support/Code/User/settings.json"
+          targetFile="$HOME/Library/Application Support/Code/User/settings.json"
         else
           targetFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
         fi
