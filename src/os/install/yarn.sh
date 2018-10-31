@@ -6,7 +6,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-print_in_purple "\n   PHP Tools\n\n"
+print_in_purple "\n   Yarn\n\n"
 
-brew_install "WP CLI" "wp-cli"
-brew_install "Composer" "composer"
+
+# daily
+brew_install "Yarn" "yarn"
