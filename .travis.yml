@@ -25,3 +25,5 @@ notifications:
 
 script:
   - ./test/main.sh
+
+sudo: required
