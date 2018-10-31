@@ -4,7 +4,7 @@
 
 # OS X
 
-elif [ "$TRAVIS_OS_NAME" = "osx" ]; then
+if [ "$TRAVIS_OS_NAME" = "osx" ]; then
 
     # Install `ShellCheck`
     # (required for testing).
