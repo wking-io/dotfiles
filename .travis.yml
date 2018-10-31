@@ -4,7 +4,6 @@
 # https://docs.travis-ci.com
 
 before_install:
-  - chmod +x ./test/customize_environment.sh
   - chmod +x ./test/run_shellcheck.sh
   - chmod +x ./test/main.sh
   - ./test/customize_environment.sh
