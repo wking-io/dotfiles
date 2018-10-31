@@ -1,4 +1,8 @@
-# Path to NVM
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# NVM Setup
+
+# NVM Path
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
 

@@ -1,6 +1,6 @@
-#######################
-####   FUNCTIONS   ####
-#######################
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# FUNCTIONS
 
 # Function to install peer deps in an npm package
 # ▲ installPeer package
@@ -16,9 +16,9 @@ function mcd() {
 }
 
 
-#######################
-####    ALIASES    ####
-#######################
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# ALIASES
 
 # GIT aliases
 alias gs="git status"
