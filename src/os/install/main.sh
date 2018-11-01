@@ -9,7 +9,6 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 ./xcode.sh
 ./homebrew.sh
 ./zsh.sh
-./nvm.sh
 
 ./browsers.sh
 ./git.sh
@@ -17,6 +16,5 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 ./yarn.sh
 ./vscode.sh
 ./apps.sh
-./npm.sh
 
 ./cleanup.sh

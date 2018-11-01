@@ -4,7 +4,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
     && . "../utils.sh" \
     && . "./utils.sh"
 
-declare -r LOCAL_SHELL_CONFIG_FILE="$HOME/.zshrc.local"
+declare -r LOCAL_SHELL_CONFIG_FILE="$HOME/.zshrc"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
