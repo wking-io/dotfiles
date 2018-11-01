@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 cd "$(dirname "${BASH_SOURCE[0]}")" \
     && . "../utils.sh"
@@ -7,10 +7,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 install_npm_package() {
 
-    execute \
-        ". $HOME/.zshrc.local \
-            && npm install --global --silent $2" \
-        "$1"
+    . $HOME/.zshrc
+    npm install --global --silent $2
 
 }
 
