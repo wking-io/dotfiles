@@ -14,13 +14,13 @@ install_oh_my_zsh() {
         print_error "Zsh not installed yet"
     fi
 
-    if [ -d "$HOME/.oh-my-zsh/themes" ] then
+    if [ -d "$HOME/.oh-my-zsh/themes" ]; then
         rm -rf "$HOME/.oh-my-zsh/themes/*"
     else
         print_error "oh-my-zsh theme directory does not exist"
     fi
 
-    print_result $? "oh-my-zsh"    
+    print_result $? "oh-my-zsh"
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
