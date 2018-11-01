@@ -34,6 +34,7 @@ main() {
     brew_install "Z" "z"
 
     brew_install "Zsh Completion" "zsh-completion"
+    brew_install "Zsh Syntax Highlighting" "zsh-syntax-highlighting"
 
 }
 
