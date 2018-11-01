@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 cd "$(dirname "${BASH_SOURCE[0]}")" \
     && . "../utils.sh" \
@@ -14,7 +14,7 @@ install_latest_stable_node() {
     # (this will also set it as the default).
 
     . $LOCAL_SHELL_CONFIG_FILE
-      nvm install node
+    nvm install node
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
