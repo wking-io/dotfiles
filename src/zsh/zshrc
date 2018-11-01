@@ -34,7 +34,7 @@ _load_settings() {
     fi
   fi
 }
-_load_settings "$HOME/.zsh/configs"
+_load_settings "$HOME/.dotfiles/src/zsh/configs"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
