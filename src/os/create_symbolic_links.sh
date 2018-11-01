@@ -8,18 +8,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 create_symlinks() {
 
     declare -a FILES_TO_SYMLINK=(
-
-        "zsh/aliases/bash_aliases"
-        "zsh/bash_autocomplete"
-        "zsh/bash_exports"
-        "zsh/bash_functions"
-        "zsh/bash_logout"
-        "zsh/bash_options"
-        "zsh/bash_profile"
-        "zsh/bash_prompt"
-        "zsh/bashrc"
-        "zsh/curlrc"
-        "zsh/inputrc"
+        "zsh/zshenv"
+        "zsh/zshrc"
 
         "git/gitattributes"
         "git/gitconfig"
