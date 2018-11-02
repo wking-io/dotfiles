@@ -1,5 +1,12 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# OH-MY-ZSH SETUP
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # ACTIVE OPTIONS
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -19,6 +26,11 @@ plugins=(git zsh-completion zsh-syntax-highlighting composer node npm osx wking)
 # z
 . /usr/local/etc/profile.d/z.sh
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# OH-MY-ZSH SOURCE
+
+source $ZSH/oh-my-zsh.sh
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
