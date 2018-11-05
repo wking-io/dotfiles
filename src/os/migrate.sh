@@ -38,7 +38,9 @@ main() {
 
     # move from ~/migration => usb/migration-{mm/dd/yyyy}
 
-    mv ~/migration $1
+    # mv ~/migration $1
+    echo $1
 }
 
-main $1
+echo $0
+main $0
