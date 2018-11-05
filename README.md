@@ -2,11 +2,13 @@
 
 ## Instructions
 
-### Run Migration From Old Computer Before Setup
+### Run Migration On Old Computer Before Setup
 
-Migration script here
+```sh
+bash -c "$(curl -LsS https://raw.github.com/wking-io/dotfiles/master/src/os/migrate.sh)"
+```
 
-### Run This Script
+### Run Setup
 
 ```sh
 bash -c "$(curl -LsS https://raw.github.com/wking-io/dotfiles/master/src/os/setup.sh)"
