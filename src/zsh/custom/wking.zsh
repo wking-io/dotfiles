@@ -20,6 +20,12 @@ function t() {
  tree -I '.git|node_modules|bower_components|.DS_Store' --dirsfirst --filelimit 15 -L ${1:-3} -aC $2
 }
 
+# undo push to passed in branch
+# ▲ undopush development
+function undopush() {
+    git push -f origin HEAD^:$1
+}
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # ALIASES
@@ -34,3 +40,14 @@ alias ga="git add"
 alias gd="git diff"
 alias gc-="git checkout -- ."
 alias gr="git reset --hard HEAD"
+alias master="git checkout master"
+
+# Shortcut for making and unmaking files executable
+alias chmoz='chmod +x'
+alias chmox='chmod -x'
+
+# Open hosts file in vscode
+alias hosts='sudo code /etc/hosts'
+
+# File size
+alias fs="stat -f \"%z bytes\""
