@@ -5,7 +5,7 @@
 ### Run Migration On Old Computer Before Setup
 
 ```sh
-bash -c "$(curl -LsS https://raw.github.com/wking-io/dotfiles/master/src/os/migrate.sh)"
+sudo ~/.dotfiles/src/os/migrate.sh path/to/migrate/location
 ```
 
 ### Run Setup
@@ -22,7 +22,7 @@ bash -c "$(curl -LsS https://raw.github.com/wking-io/dotfiles/master/src/os/setu
 
 ### Update Karabiner-Elements
 
-Map caps_lock to CMD+CONTROL+OPTION+SHIFT
+Map caps_lock to `CMD+CONTROL+OPTION+SHIFT`
 
 ### Upload BetterTouchTool Settings
 
@@ -30,4 +30,4 @@ Import settings in `/src/os/preferences/wking.bttpreset`
 
 ### Sync Settings In VSCode
 
-Settings Sync steps here
+Settings Sync steps here: **[Download Settings](https://github.com/shanalikhan/code-settings-sync/wiki/Setup-Guide#downloading-settings)**

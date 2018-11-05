@@ -10,7 +10,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 ./homebrew.sh
 ./zsh.sh
 ./nvm.sh
-
+./tools.sh
 
 ./browsers.sh
 ./git.sh
