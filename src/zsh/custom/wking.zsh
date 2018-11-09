@@ -26,6 +26,14 @@ function undopush() {
     git push -f origin HEAD^:$1
 }
 
+# undo push to passed in branch
+# ▲ undopush development
+function freshignore() {
+    git rm -r --cached .
+    git add .
+    git commit -am "Removed ignored files"
+}
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # ALIASES
