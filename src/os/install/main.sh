@@ -15,6 +15,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 ./browsers.sh
 ./git.sh
 ./php.sh
+./ruby.sh
 ./yarn.sh
 ./vscode.sh
 ./apps.sh

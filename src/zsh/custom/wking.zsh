@@ -27,11 +27,19 @@ function undopush() {
 }
 
 # undo push to passed in branch
-# ▲ undopush development
+# ▲ freshignore
 function freshignore() {
     git rm -r --cached .
     git add .
     git commit -am "Removed ignored files"
+}
+
+# restart and recompile elixir app
+# ▲ phx.restart :online_ops
+function phx.restart() {
+    Application.stop($1)
+    recompile()
+    Application.ensure_all_started($1)
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -6,6 +6,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-print_in_purple "\n   Git\n\n"
+print_in_purple "\n   DB Tools\n\n"
 
-brew_install "Git" "git"
+brew_install "SQLite" "sqlite3"
+brew_install "Postgres" "postgresql"
