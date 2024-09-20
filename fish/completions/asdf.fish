@@ -1,0 +1,1 @@
+/Users/wking/.asdf/completions/asdf.fish

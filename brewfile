@@ -1,0 +1,14 @@
+# Taps
+tap 'homebrew/cask'
+tap 'homebrew/bundle'
+
+# Brew
+brew 'awk'
+brew 'fish'
+brew 'gh'
+brew 'git'
+brew 'mas'
+brew 'neovim'
+brew 'pyenv'
+brew 'redis'
+brew 'ripgrep'

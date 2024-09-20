@@ -1,6 +1,34 @@
-- clean: ['~']
-
+- defaults:
+    link:
+      create: true
+      relink: true
+      force: true
+    shell:
+      quiet: true
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+- clean: ["~"]
 - link:
     ~/.gitconfig: gitconfig
-
-
+    ~/.config/nvim: nvim
+    ~/.config/fish: fish
+- create:
+    - ~/Code
+- shell:
+  - description: Hushing login
+    command: "[ -f ~/.hushlogin ] || touch ~/.hushlogin"
+  - description: Installing brew
+    command: "[ -x \"$(which brew)\" ] || /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
+  - description: Updating brew
+    command: "brew update"
+  - description: Installing brew bundler
+    command: "brew tap homebrew/bundle"
+  - description: Installing brewfile bundle
+    command: "brew bundle"
+    stdout: true
+    stderr: true
+  - description: Removing old brew files
+    command: "brew cleanup"
+  - description: Clearing sudo credential cache
+    command: "sudo --reset-timestamp"
