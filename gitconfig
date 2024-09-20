@@ -1,0 +1,16 @@
+[user]
+	email = contact@wking.dev
+	name = Will King
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
+[http]
+	postBuffer = 157286400
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
