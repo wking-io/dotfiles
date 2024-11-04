@@ -9,6 +9,8 @@ alias gaa="git add -A"
 alias a="php artisan"
 alias python="python3"
 alias p="pnpm"
+alias sc="cd ~/sites/crunchy/"
+alias sp="cd ~/sites/projects/"
 
 source ~/.asdf/asdf.fish
 
