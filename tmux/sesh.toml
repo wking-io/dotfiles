@@ -1,0 +1,15 @@
+[[session]]
+name = "misc"
+path = "~/Developer"
+
+[[session]]
+name = "bridge-frontend"
+path = "~/Developer/crunchy/bridge-frontend"
+startup_script = "~/.dotfiles/tmux/default_sesh"
+
+[[session]]
+name = "crunchy-www"
+path = "~/Developer/crunchy/crunchy-www"
+startup_script = "~/.dotfiles/tmux/default_sesh"
+
+

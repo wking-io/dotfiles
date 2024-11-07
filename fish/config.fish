@@ -1,5 +1,14 @@
 set -x LANG en_US.UTF-8
 
+set -gx EDITOR (which nvim)
+set -gx VISUAL $EDITOR
+set -gx SUDO_EDITOR $EDITOR
+
+# EDITOR
+abbr vim nvim
+abbr vi nvim
+abbr v nvim
+
 # ALIASES
 alias gs="git status"
 alias gch="git checkout"
@@ -9,8 +18,8 @@ alias gaa="git add -A"
 alias a="php artisan"
 alias python="python3"
 alias p="pnpm"
-alias sc="cd ~/sites/crunchy/"
-alias sp="cd ~/sites/projects/"
+alias sc="cd ~/Developer/crunchy/"
+alias sp="cd ~/Developer/projects/"
 
 source ~/.asdf/asdf.fish
 
@@ -29,3 +38,5 @@ end
 
 set -gx GOPATH $HOME/go
 set -gx PATH $GOPATH/bin /usr/local/go/bin $PATH
+zoxide init fish | source
+fzf --fish | source
