@@ -14,6 +14,23 @@ return {
     -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
   },
+  opts = {
+    -- @type lspconfig.options
+    servers = {
+      intelephense = {
+        filetypes = { 'php', 'blade', 'php_only' },
+        settings = {
+          intelephense = {
+            filetypes = { 'php', 'blade', 'php_only' },
+            files = {
+              associations = { '*.php', '*.blade.php' }, -- Associating .blade.php files as well
+              maxSize = 5000000,
+            },
+          },
+        },
+      },
+    },
+  },
   config = function()
     -- Brief aside: **What is LSP?**
     --
@@ -139,6 +156,8 @@ return {
           vim.lsp.buf.hover()
         end, { remap = false, silent = true, buffer = event.buf, desc = 'Toggle hover' })
 
+        vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
+
         -- The following code creates a keymap to toggle inlay hints in your
         -- code, if the language server you are using supports them
         --
@@ -177,25 +196,12 @@ return {
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
-      -- clangd = {},
-      -- gopls = {},
-      -- pyright = {},
-      -- rust_analyzer = {},
-      -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-      --
-      -- Some languages (like typescript) have entire language plugins that can be useful:
-      --    https://github.com/pmizio/typescript-tools.nvim
-      --
-      -- But for many setups, the LSP (`ts_ls`) will work just fine
-      -- ts_ls = {},
-      --
-
       eslint = {
         settings = {
           workingDirectories = { mode = 'auto' },
         },
       },
-
+      intelephense = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -210,6 +216,9 @@ return {
           },
         },
       },
+      phpstan = {},
+      pint = {},
+      html = {},
     }
 
     -- Ensure the servers and tools above are installed

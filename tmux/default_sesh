@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-tmux split-window -v -c "#{pane_current_path}" -l 25%
-tmux select-pane -U
-nvim

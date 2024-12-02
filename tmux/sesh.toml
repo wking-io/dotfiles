@@ -3,13 +3,38 @@ name = "misc"
 path = "~/Developer"
 
 [[session]]
-name = "bridge-frontend"
-path = "~/Developer/crunchy/bridge-frontend"
-startup_script = "~/.dotfiles/tmux/default_sesh"
+name = "dotfiles"
+path = "~/.dotfiles"
 
 [[session]]
-name = "crunchy-www"
-path = "~/Developer/crunchy/crunchy-www"
-startup_script = "~/.dotfiles/tmux/default_sesh"
+name = "wking"
+path = "~/Developer/projects/wking"
 
+[[session]]
+name = "madeforme"
+path = "~/Developer/laravel/madeforme"
+
+[[session]]
+name = "bridge-frontend"
+path = "~/Developer/crunchy/bridge-frontend"
+
+[[session]]
+name = "crunchy-docs"
+path = "~/Developer/crunchy/crunchy-docs/"
+
+[[session]]
+name = "crunchy-cpk"
+path = "~/Developer/crunchy/crunchy-postgres-for-kubernetes-docs"
+
+[[session]]
+name = "crunchy-access-portal"
+path = "~/Developer/crunchy/crunchy-access-portal"
+
+[[session]]
+name = "bridge-docs"
+path = "~/Developer/crunchy/bridge-docs"
+
+[[session]]
+name = "audio-visual"
+path = "~/Developer/projects/audio-visual"
 

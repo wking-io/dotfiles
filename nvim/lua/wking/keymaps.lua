@@ -29,3 +29,26 @@ vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 -- Save file and quite with leader
 vim.keymap.set('n', '<leader>w', ':w<CR>', { silent = true, desc = 'Save' })
 vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = '[Q]uit' })
+
+-- Buffer deletes
+
+vim.keymap.set('n', '<leader>bd', function()
+  vim.api.nvim_buf_delete(0, {})
+end, { desc = 'Delete current buffer' })
+
+vim.keymap.set('n', '<leader>bc', function()
+  local bufs = vim.api.nvim_list_bufs()
+  for _, i in ipairs(bufs) do
+    vim.api.nvim_buf_delete(i, {})
+  end
+end, { desc = 'Delete all buffers' })
+
+vim.keymap.set('n', '<leader>bc', function()
+  local bufs = vim.api.nvim_list_bufs()
+  local current_buf = vim.api.nvim_get_current_buf()
+  for _, i in ipairs(bufs) do
+    if i ~= current_buf then
+      vim.api.nvim_buf_delete(i, {})
+    end
+  end
+end, { desc = 'Delete all buffers except current' })
