@@ -1,5 +1,7 @@
 set -x LANG en_US.UTF-8
 
+fish_vi_key_bindings
+
 set -gx EDITOR (which nvim)
 set -gx VISUAL $EDITOR
 set -gx SUDO_EDITOR $EDITOR
@@ -20,6 +22,8 @@ alias python="python3"
 alias p="pnpm"
 alias sc="cd ~/Developer/crunchy/"
 alias sp="cd ~/Developer/projects/"
+alias td="tmux detach"
+alias ta="tmux attach"
 
 source ~/.asdf/asdf.fish
 
@@ -38,5 +42,6 @@ end
 
 set -gx GOPATH $HOME/go
 set -gx PATH $GOPATH/bin /usr/local/go/bin $PATH
+set -gx PATH /Users/wking/.cache/rebar3/bin $PATH
 zoxide init fish | source
 fzf --fish | source

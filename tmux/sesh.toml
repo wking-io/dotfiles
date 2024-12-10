@@ -38,3 +38,6 @@ path = "~/Developer/crunchy/bridge-docs"
 name = "audio-visual"
 path = "~/Developer/projects/audio-visual"
 
+[[session]]
+name = "gleam-trpg"
+path = "~/Developer/projects/trpg"
