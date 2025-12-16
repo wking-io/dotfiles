@@ -7,6 +7,10 @@ name = "dotfiles"
 path = "~/.dotfiles"
 
 [[session]]
+name = "qmk"
+path = "~/qmk_userspace"
+
+[[session]]
 name = "wking"
 path = "~/Developer/projects/wking"
 
@@ -19,12 +23,20 @@ name = "bridge-frontend"
 path = "~/Developer/crunchy/bridge-frontend"
 
 [[session]]
+name = "crunchy-www"
+path = "~/Developer/crunchy/crunchy-www/"
+
+[[session]]
 name = "crunchy-docs"
 path = "~/Developer/crunchy/crunchy-docs/"
 
 [[session]]
 name = "crunchy-cpk"
 path = "~/Developer/crunchy/crunchy-postgres-for-kubernetes-docs"
+
+[[session]]
+name = "crunchy-automation"
+path = "~/Developer/crunchy/crunchy-postgres-automation-docs"
 
 [[session]]
 name = "crunchy-access-portal"
@@ -35,9 +47,25 @@ name = "bridge-docs"
 path = "~/Developer/crunchy/bridge-docs"
 
 [[session]]
+name = "bridge-raven"
+path = "~/Developer/crunchy/bridge-raven"
+
+[[session]]
 name = "audio-visual"
 path = "~/Developer/projects/audio-visual"
 
 [[session]]
 name = "gleam-trpg"
 path = "~/Developer/projects/trpg"
+
+[[session]]
+name = "lifeos"
+path = "~/Developer/laravel/lifeos"
+
+[[session]]
+name = "AF"
+path = "~/Developer/laravel/af"
+
+[[session]]
+name = "whatislaravel"
+path = "~/Developer/try-hard/whatislaravel"

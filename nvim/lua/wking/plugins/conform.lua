@@ -26,7 +26,7 @@ return { -- Autoformat
         lsp_format_opt = 'fallback'
       end
       return {
-        timeout_ms = 500,
+        timeout_ms = 5000,
         lsp_format = lsp_format_opt,
       }
     end,
@@ -39,6 +39,8 @@ return { -- Autoformat
       php = { 'pint' },
       html = { 'prettierd', 'prettier', stop_after_first = true },
       css = { 'prettierd', 'prettier', stop_after_first = true },
+      scss = { 'prettierd', 'prettier', stop_after_first = true },
+      twig = { 'prettierd', 'prettier', stop_after_first = true },
     },
   },
 }

@@ -45,3 +45,10 @@ set -gx PATH $GOPATH/bin /usr/local/go/bin $PATH
 set -gx PATH /Users/wking/.cache/rebar3/bin $PATH
 zoxide init fish | source
 fzf --fish | source
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+
+
+starship init fish | source

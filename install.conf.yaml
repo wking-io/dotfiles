@@ -13,6 +13,8 @@
     ~/.gitconfig: gitconfig
     ~/.config/nvim: nvim
     ~/.config/fish: fish
+    ~/.config/ghostty: ghostty
+    ~/.config/starship.toml: starship/starship.toml
 - create:
     - ~/Code
 - shell:

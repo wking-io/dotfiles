@@ -45,16 +45,34 @@ return {
       -- lint.linters_by_ft['terraform'] = nil
       -- lint.linters_by_ft['text'] = nil
 
+      -- Utility function to check for ESLint config
+      local eslint_config_exists = function()
+        return vim.fn.filereadable '.eslintrc.js' == 1
+          or vim.fn.filereadable '.eslintrc.json' == 1
+          or vim.fn.filereadable '.eslintrc.yml' == 1
+          or vim.fn.filereadable '.eslintrc' == 1
+          or vim.fn.filereadable 'eslint.config.js' == 1
+      end
+
       -- Create autocommand which carries out the actual linting
       -- on the specified events.
       local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
       vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
         group = lint_augroup,
         callback = function()
+          -- Get the current filetype
+          local ft = vim.bo.filetype
+
+          -- Check if eslint is configured for this filetype
+          if lint.linters_by_ft[ft] and vim.tbl_contains(lint.linters_by_ft[ft], 'eslint') then
+            -- Run only if an ESLint config exists
+            if eslint_config_exists() then
+              lint.try_lint()
+            end
           -- Only run the linter in buffers that you can modify in order to
           -- avoid superfluous noise, notably within the handy LSP pop-ups that
           -- describe the hovered symbol using Markdown.
-          if vim.opt_local.modifiable:get() then
+          elseif vim.opt_local.modifiable:get() then
             lint.try_lint()
           end
         end,
