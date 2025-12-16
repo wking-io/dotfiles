@@ -1,0 +1,20 @@
+alias c 'clear'
+alias code 'vim'
+alias gs 'git status'
+alias gch 'git checkout'
+alias gcb 'git checkout -b'
+alias gc 'git commit -m'
+alias gaa="git add -A"
+alias grep 'grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+alias ks 'tmux kill-server'
+alias pbc 'pbcopy'
+alias pbp 'pbpaste'
+alias oc 'opencode'
+# Disable automatic completion generation for oc to avoid errors
+complete -c oc -e
+alias vimdiff 'nvim -d'
+alias wr 'wrangler'
+alias a 'php artisan'
+alias p 'pnpm'
+alias td 'tmux detach'
+alias ta 'tmux attach'
