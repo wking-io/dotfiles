@@ -11,4 +11,3 @@ abbr vim nvim
 abbr vi nvim
 abbr v nvim
 
-source ~/.asdf/asdf.fish

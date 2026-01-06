@@ -14,6 +14,7 @@
     ~/.config/nvim: nvim
     ~/.config/fish: fish
     ~/.config/ghostty: ghostty
+    ~/.config/opencode: opencode
     ~/.config/starship.toml: starship/starship.toml
 - create:
     - ~/Code
