@@ -1,4 +1,11 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "theme": "system"
+  "theme": "system",
+  "mcp": {
+    "daw": {
+      "type": "remote",
+      "url": "http://127.0.0.1:43124/mcp",
+      "enabled": true
+    }
+  }
 }

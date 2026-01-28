@@ -14,4 +14,4 @@ alias navi="art queue:listen --tries=2"
 alias dusk="art dusk"
 alias lager="less +F storage/logs/laravel.log"
 alias rayi="composer require spatie/laravel-ray --dev"
-alias cppint="cp ~/.dotfiles/php/pint.json pint.json && echo 'Pint formatting rules copied.'"
+

@@ -5,54 +5,31 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
+
+      -- Base linters (non-JS/TS)
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
-        javascript = { 'eslint_d' },
-        typescipt = { 'eslint_d' },
-        javascriptreact = { 'eslint_d' },
-        typescriptreact = { 'eslint_d' },
       }
 
-      -- To allow other plugins to add linters to require('lint').linters_by_ft,
-      -- instead set linters_by_ft like this:
-      -- lint.linters_by_ft = lint.linters_by_ft or {}
-      -- lint.linters_by_ft['markdown'] = { 'markdownlint' }
-      --
-      -- However, note that this will enable a set of default linters,
-      -- which will cause errors unless these tools are available:
-      -- {
-      --   clojure = { "clj-kondo" },
-      --   dockerfile = { "hadolint" },
-      --   inko = { "inko" },
-      --   janet = { "janet" },
-      --   json = { "jsonlint" },
-      --   markdown = { "vale" },
-      --   rst = { "vale" },
-      --   ruby = { "ruby" },
-      --   terraform = { "tflint" },
-      --   text = { "vale" }
-      -- }
-      --
-      -- You can disable the default linters by setting their filetypes to nil:
-      -- lint.linters_by_ft['clojure'] = nil
-      -- lint.linters_by_ft['dockerfile'] = nil
-      -- lint.linters_by_ft['inko'] = nil
-      -- lint.linters_by_ft['janet'] = nil
-      -- lint.linters_by_ft['json'] = nil
-      -- lint.linters_by_ft['markdown'] = nil
-      -- lint.linters_by_ft['rst'] = nil
-      -- lint.linters_by_ft['ruby'] = nil
-      -- lint.linters_by_ft['terraform'] = nil
-      -- lint.linters_by_ft['text'] = nil
-
       -- Utility function to check for ESLint config
-      local eslint_config_exists = function()
+      local function eslint_config_exists()
         return vim.fn.filereadable '.eslintrc.js' == 1
           or vim.fn.filereadable '.eslintrc.json' == 1
           or vim.fn.filereadable '.eslintrc.yml' == 1
           or vim.fn.filereadable '.eslintrc' == 1
           or vim.fn.filereadable 'eslint.config.js' == 1
+          or vim.fn.filereadable 'eslint.config.mjs' == 1
+          or vim.fn.filereadable 'eslint.config.ts' == 1
       end
+
+      -- Utility function to check for Biome config
+      local function biome_config_exists()
+        return vim.fn.filereadable 'biome.json' == 1
+          or vim.fn.filereadable 'biome.jsonc' == 1
+      end
+
+      -- JS/TS filetypes that can use either eslint or biome
+      local js_filetypes = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' }
 
       -- Create autocommand which carries out the actual linting
       -- on the specified events.
@@ -60,18 +37,16 @@ return {
       vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
         group = lint_augroup,
         callback = function()
-          -- Get the current filetype
           local ft = vim.bo.filetype
 
-          -- Check if eslint is configured for this filetype
-          if lint.linters_by_ft[ft] and vim.tbl_contains(lint.linters_by_ft[ft], 'eslint') then
-            -- Run only if an ESLint config exists
-            if eslint_config_exists() then
-              lint.try_lint()
+          -- For JS/TS filetypes, choose linter based on project config
+          if vim.tbl_contains(js_filetypes, ft) then
+            if biome_config_exists() then
+              lint.try_lint 'biomejs'
+            elseif eslint_config_exists() then
+              lint.try_lint 'eslint_d'
             end
-          -- Only run the linter in buffers that you can modify in order to
-          -- avoid superfluous noise, notably within the handy LSP pop-ups that
-          -- describe the hovered symbol using Markdown.
+          -- For other filetypes, run configured linters if buffer is modifiable
           elseif vim.opt_local.modifiable:get() then
             lint.try_lint()
           end

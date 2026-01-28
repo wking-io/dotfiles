@@ -217,7 +217,7 @@ return {
         },
       },
       phpstan = {},
-      pint = {},
+
       html = {},
     }
 

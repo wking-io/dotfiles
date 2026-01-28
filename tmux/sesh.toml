@@ -12,60 +12,28 @@ path = "~/qmk_userspace"
 
 [[session]]
 name = "wking"
-path = "~/Developer/projects/wking"
+path = "~/Developer/wking"
 
 [[session]]
-name = "madeforme"
-path = "~/Developer/laravel/madeforme"
+name = "daw"
+path = "~/Developer/daw"
 
 [[session]]
-name = "bridge-frontend"
-path = "~/Developer/crunchy/bridge-frontend"
+name = "ref-base-ui"
+path = "~/.reference/base-ui"
 
 [[session]]
-name = "crunchy-www"
-path = "~/Developer/crunchy/crunchy-www/"
+name = "ref-effect"
+path = "~/.reference/effect"
 
 [[session]]
-name = "crunchy-docs"
-path = "~/Developer/crunchy/crunchy-docs/"
+name = "ref-effect-atom"
+path = "~/.reference/effect-atom"
 
 [[session]]
-name = "crunchy-cpk"
-path = "~/Developer/crunchy/crunchy-postgres-for-kubernetes-docs"
+name = "ref-everforest"
+path = "~/.reference/everforest"
 
 [[session]]
-name = "crunchy-automation"
-path = "~/Developer/crunchy/crunchy-postgres-automation-docs"
-
-[[session]]
-name = "crunchy-access-portal"
-path = "~/Developer/crunchy/crunchy-access-portal"
-
-[[session]]
-name = "bridge-docs"
-path = "~/Developer/crunchy/bridge-docs"
-
-[[session]]
-name = "bridge-raven"
-path = "~/Developer/crunchy/bridge-raven"
-
-[[session]]
-name = "audio-visual"
-path = "~/Developer/projects/audio-visual"
-
-[[session]]
-name = "gleam-trpg"
-path = "~/Developer/projects/trpg"
-
-[[session]]
-name = "lifeos"
-path = "~/Developer/laravel/lifeos"
-
-[[session]]
-name = "AF"
-path = "~/Developer/laravel/af"
-
-[[session]]
-name = "whatislaravel"
-path = "~/Developer/try-hard/whatislaravel"
+name = "ref-opencode"
+path = "~/.reference/opencode"

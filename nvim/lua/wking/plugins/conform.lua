@@ -1,3 +1,8 @@
+-- Utility function to check for Biome config
+local function biome_config_exists()
+  return vim.fn.filereadable 'biome.json' == 1 or vim.fn.filereadable 'biome.jsonc' == 1
+end
+
 return { -- Autoformat
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
@@ -32,11 +37,32 @@ return { -- Autoformat
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      javascript = { 'prettierd', 'prettier', stop_after_first = true },
-      typescript = { 'prettierd', 'prettier', stop_after_first = true },
-      javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-      typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-      php = { 'pint' },
+      -- JS/TS uses dynamic formatter selection below
+      javascript = function()
+        if biome_config_exists() then
+          return { 'biome' }
+        end
+        return { 'prettierd', 'prettier', stop_after_first = true }
+      end,
+      typescript = function()
+        if biome_config_exists() then
+          return { 'biome' }
+        end
+        return { 'prettierd', 'prettier', stop_after_first = true }
+      end,
+      javascriptreact = function()
+        if biome_config_exists() then
+          return { 'biome' }
+        end
+        return { 'prettierd', 'prettier', stop_after_first = true }
+      end,
+      typescriptreact = function()
+        if biome_config_exists() then
+          return { 'biome' }
+        end
+        return { 'prettierd', 'prettier', stop_after_first = true }
+      end,
+
       html = { 'prettierd', 'prettier', stop_after_first = true },
       css = { 'prettierd', 'prettier', stop_after_first = true },
       scss = { 'prettierd', 'prettier', stop_after_first = true },
