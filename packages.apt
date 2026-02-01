@@ -1,5 +1,5 @@
 # Ubuntu 24.04 LTS packages
-# Install with: xargs -a packages.apt sudo apt install -y
+# Install with: grep -v '^#' packages.apt | grep -v '^$' | xargs sudo apt install -y
 
 # Shell & Terminal
 fish
@@ -18,6 +18,9 @@ build-essential
 curl
 wget
 unzip
+
+# Go (needed for sesh)
+golang-go
 
 # Clipboard support (for tmux/neovim)
 xclip

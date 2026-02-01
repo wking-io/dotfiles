@@ -1,22 +1,13 @@
-# Additional PATH entries for common installation locations
-# This handles tools installed via manual scripts
+# Unified PATH configuration
+# All user-installed binaries go to ~/.local/bin
+# Tool-specific data (node versions, pnpm packages) stays in ~/.local/share
 
-# Local bin directory (common for manually installed tools)
+# Primary user bin directory - all tools install here
 if test -d "$HOME/.local/bin"
-    fish_add_path --global "$HOME/.local/bin"
+    fish_add_path --global --prepend "$HOME/.local/bin"
 end
 
-# Cargo (Rust)
+# Cargo (Rust) - keeps its own structure
 if test -d "$HOME/.cargo/bin"
     fish_add_path --global "$HOME/.cargo/bin"
-end
-
-# Go binaries
-if test -d "$HOME/go/bin"
-    fish_add_path --global "$HOME/go/bin"
-end
-
-# fnm (Fast Node Manager) - added by install script
-if test -d "$HOME/.local/share/fnm"
-    fish_add_path --global "$HOME/.local/share/fnm"
 end
