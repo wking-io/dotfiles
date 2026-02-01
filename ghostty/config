@@ -57,6 +57,7 @@ font-size = 11
 mouse-scroll-multiplier = 2
 
 # Window Config
+# Note: macos-* options are ignored on Linux
 macos-titlebar-style = tabs
 window-width = 140
 window-height = 30
@@ -74,19 +75,16 @@ cursor-style-blink = false
 clipboard-read = allow
 clipboard-write = allow
 
-# Allow option to work as alt on macos
+# Allow option to work as alt on macos (ignored on Linux)
 macos-option-as-alt = true
 
 # Keybindings
 keybind = super+r=reload_config
-keybind = ctrl+n=new_tab
+keybind = super+t=new_tab
 
-keybind = ctrl+h=previous_tab
-keybind = ctrl+j=goto_split:bottom
-keybind = ctrl+k=goto_split:top
-keybind = ctrl+l=next_tab
 
-keybind = ctrl+a>j=new_split:down
-keybind = ctrl+a>k=new_split:up
-keybind = ctrl+a>f=toggle_split_zoom
+
+keybind = ctrl+s>j=new_split:down
+keybind = ctrl+s>k=new_split:up
+keybind = ctrl+s>f=toggle_split_zoom
 

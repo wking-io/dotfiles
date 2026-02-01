@@ -1,0 +1,30 @@
+# Ubuntu 24.04 LTS packages
+# Install with: xargs -a packages.apt sudo apt install -y
+
+# Shell & Terminal
+fish
+tmux
+
+# Development Tools
+git
+neovim
+ripgrep
+fzf
+direnv
+tree
+
+# Build essentials (needed for some manual installs)
+build-essential
+curl
+wget
+unzip
+
+# Clipboard support (for tmux/neovim)
+xclip
+
+# Video/Audio processing
+ffmpeg
+
+# Python (for neovim plugins)
+python3-pip
+python3-venv

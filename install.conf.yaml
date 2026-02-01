@@ -11,27 +11,66 @@
 - clean: ["~"]
 - link:
     ~/.gitconfig: gitconfig
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.config/sesh: tmux
     ~/.config/nvim: nvim
     ~/.config/fish: fish
     ~/.config/ghostty: ghostty
     ~/.config/opencode: opencode
     ~/.config/starship.toml: starship/starship.toml
+    ~/.claude/settings.json: claude/settings.json
 - create:
     - ~/Code
 - shell:
   - description: Hushing login
     command: "[ -f ~/.hushlogin ] || touch ~/.hushlogin"
-  - description: Installing brew
-    command: "[ -x \"$(which brew)\" ] || /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
-  - description: Updating brew
-    command: "brew update"
-  - description: Installing brew bundler
-    command: "brew tap homebrew/bundle"
-  - description: Installing brewfile bundle
-    command: "brew bundle"
+
+  # macOS: Install packages via Homebrew
+  - description: Installing brew (macOS)
+    command: |
+      if [ "$(uname)" = "Darwin" ]; then
+        [ -x "$(which brew)" ] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      fi
+  - description: Updating brew (macOS)
+    command: |
+      if [ "$(uname)" = "Darwin" ] && command -v brew >/dev/null 2>&1; then
+        brew update
+      fi
+  - description: Installing brew bundler (macOS)
+    command: |
+      if [ "$(uname)" = "Darwin" ] && command -v brew >/dev/null 2>&1; then
+        brew tap homebrew/bundle
+      fi
+  - description: Installing brewfile bundle (macOS)
+    command: |
+      if [ "$(uname)" = "Darwin" ] && command -v brew >/dev/null 2>&1; then
+        brew bundle
+      fi
     stdout: true
     stderr: true
-  - description: Removing old brew files
-    command: "brew cleanup"
+  - description: Removing old brew files (macOS)
+    command: |
+      if [ "$(uname)" = "Darwin" ] && command -v brew >/dev/null 2>&1; then
+        brew cleanup
+      fi
+
+  # Linux: Install packages via apt and custom script
+  - description: Installing apt packages (Linux)
+    command: |
+      if [ "$(uname)" = "Linux" ] && command -v apt >/dev/null 2>&1; then
+        echo "Installing packages from packages.apt..."
+        sudo apt update
+        xargs -a packages.apt sudo apt install -y
+      fi
+    stdout: true
+    stderr: true
+  - description: Running Linux install script
+    command: |
+      if [ "$(uname)" = "Linux" ] && [ -f install-linux.sh ]; then
+        ./install-linux.sh
+      fi
+    stdout: true
+    stderr: true
+
   - description: Clearing sudo credential cache
     command: "sudo --reset-timestamp"
