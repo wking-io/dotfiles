@@ -1,4 +1,9 @@
--- Utility function to check for Biome config
+-- Utility function to check for oxfmt config
+local function oxlint_config_exists()
+  return vim.fn.filereadable '.oxlintrc.json' == 1
+end
+
+-- Utility function to check for Biome config (legacy)
 local function biome_config_exists()
   return vim.fn.filereadable 'biome.json' == 1 or vim.fn.filereadable 'biome.jsonc' == 1
 end
@@ -39,32 +44,55 @@ return { -- Autoformat
       lua = { 'stylua' },
       -- JS/TS uses dynamic formatter selection below
       javascript = function()
-        if biome_config_exists() then
+        if oxlint_config_exists() then
+          return { 'oxfmt' }
+        elseif biome_config_exists() then
           return { 'biome' }
         end
         return { 'prettierd', 'prettier', stop_after_first = true }
       end,
       typescript = function()
-        if biome_config_exists() then
+        if oxlint_config_exists() then
+          return { 'oxfmt' }
+        elseif biome_config_exists() then
           return { 'biome' }
         end
         return { 'prettierd', 'prettier', stop_after_first = true }
       end,
       javascriptreact = function()
-        if biome_config_exists() then
+        if oxlint_config_exists() then
+          return { 'oxfmt' }
+        elseif biome_config_exists() then
           return { 'biome' }
         end
         return { 'prettierd', 'prettier', stop_after_first = true }
       end,
       typescriptreact = function()
-        if biome_config_exists() then
+        if oxlint_config_exists() then
+          return { 'oxfmt' }
+        elseif biome_config_exists() then
           return { 'biome' }
         end
         return { 'prettierd', 'prettier', stop_after_first = true }
       end,
 
       html = { 'prettierd', 'prettier', stop_after_first = true },
-      css = { 'prettierd', 'prettier', stop_after_first = true },
+      css = function()
+        if oxlint_config_exists() then
+          return { 'oxfmt' }
+        elseif biome_config_exists() then
+          return { 'biome' }
+        end
+        return { 'prettierd', 'prettier', stop_after_first = true }
+      end,
+      json = function()
+        if oxlint_config_exists() then
+          return { 'oxfmt' }
+        elseif biome_config_exists() then
+          return { 'biome' }
+        end
+        return { 'prettierd', 'prettier', stop_after_first = true }
+      end,
       scss = { 'prettierd', 'prettier', stop_after_first = true },
       twig = { 'prettierd', 'prettier', stop_after_first = true },
     },

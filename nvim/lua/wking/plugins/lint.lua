@@ -22,7 +22,12 @@ return {
           or vim.fn.filereadable 'eslint.config.ts' == 1
       end
 
-      -- Utility function to check for Biome config
+      -- Utility function to check for oxlint config
+      local function oxlint_config_exists()
+        return vim.fn.filereadable '.oxlintrc.json' == 1
+      end
+
+      -- Utility function to check for Biome config (legacy)
       local function biome_config_exists()
         return vim.fn.filereadable 'biome.json' == 1
           or vim.fn.filereadable 'biome.jsonc' == 1
@@ -41,7 +46,9 @@ return {
 
           -- For JS/TS filetypes, choose linter based on project config
           if vim.tbl_contains(js_filetypes, ft) then
-            if biome_config_exists() then
+            if oxlint_config_exists() then
+              lint.try_lint 'oxlint'
+            elseif biome_config_exists() then
               lint.try_lint 'biomejs'
             elseif eslint_config_exists() then
               lint.try_lint 'eslint_d'

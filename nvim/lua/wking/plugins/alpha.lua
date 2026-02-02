@@ -111,9 +111,9 @@ return {
     local buttons = {
       type = 'group',
       val = {
-        theme.button('f', '  Find file', "<cmd>lua require('telescope.builtin').find_files()<cr>"),
-        theme.button('r', '  Recently used files', ':Telescope oldfiles <CR>'),
-        theme.button('t', '󱄽  Find text', ':Telescope live_grep <CR>'),
+        theme.button('f', '  Find file', "<cmd>lua Snacks.picker.files()<cr>"),
+        theme.button('r', '  Recently used files', '<cmd>lua Snacks.picker.recent()<cr>'),
+        theme.button('t', '󱄽  Find text', '<cmd>lua Snacks.picker.grep()<cr>'),
         theme.button('c', '  Configuration', ':e ~/.config/nvim/init.lua <CR>'),
         theme.button('q', '󰅜  Quit Neovim', ':qa<CR>'),
       },

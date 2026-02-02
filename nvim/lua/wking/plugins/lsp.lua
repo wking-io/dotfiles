@@ -3,8 +3,8 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
-    { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
-    'williamboman/mason-lspconfig.nvim',
+    { 'mason-org/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+    'mason-org/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
     -- Useful status updates for LSP.
@@ -77,27 +77,27 @@ return {
         -- Jump to the definition of the word under your cursor.
         --  This is where a variable was first declared, or where a function is defined, etc.
         --  To jump back, press <C-t>.
-        map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+        map('gd', function() Snacks.picker.lsp_definitions() end, '[G]oto [D]efinition')
 
         -- Find references for the word under your cursor.
-        map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+        map('gr', function() Snacks.picker.lsp_references() end, '[G]oto [R]eferences')
 
         -- Jump to the implementation of the word under your cursor.
         --  Useful when your language has ways of declaring types without an actual implementation.
-        map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+        map('gI', function() Snacks.picker.lsp_implementations() end, '[G]oto [I]mplementation')
 
         -- Jump to the type of the word under your cursor.
         --  Useful when you're not sure what type a variable is and you want to see
         --  the definition of its *type*, not where it was *defined*.
-        map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+        map('<leader>D', function() Snacks.picker.lsp_type_definitions() end, 'Type [D]efinition')
 
         -- Fuzzy find all the symbols in your current document.
         --  Symbols are things like variables, functions, types, etc.
-        map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+        map('<leader>ds', function() Snacks.picker.lsp_symbols() end, '[D]ocument [S]ymbols')
 
         -- Fuzzy find all the symbols in your current workspace.
         --  Similar to document symbols, except searches over your entire project.
-        map('<leader>Ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+        map('<leader>Ws', function() Snacks.picker.lsp_workspace_symbols() end, '[W]orkspace [S]ymbols')
 
         -- Rename the variable under your cursor.
         --  Most Language Servers support renaming across files, etc.
@@ -156,7 +156,9 @@ return {
           vim.lsp.buf.hover()
         end, { remap = false, silent = true, buffer = event.buf, desc = 'Toggle hover' })
 
-        vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
+        vim.keymap.set('n', '<leader>cd', function()
+          vim.diagnostic.open_float({ focus = false })
+        end, { desc = 'Line Diagnostics' })
 
         -- The following code creates a keymap to toggle inlay hints in your
         -- code, if the language server you are using supports them
@@ -196,6 +198,7 @@ return {
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
+      oxlint = {},
       eslint = {
         settings = {
           workingDirectories = { mode = 'auto' },
@@ -250,6 +253,7 @@ return {
       },
     }
 
-    require('lspconfig').gleam.setup {}
+    vim.lsp.config.gleam = {}
+    vim.lsp.enable("gleam")
   end,
 }
