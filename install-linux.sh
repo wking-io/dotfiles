@@ -77,6 +77,16 @@ if ! command -v ghostty &> /dev/null; then
     echo "Note: Ghostty installation on Linux varies. Check https://ghostty.org for instructions."
 fi
 
+# Set fish as default shell
+if command -v fish &> /dev/null; then
+    FISH_PATH=$(which fish)
+    CURRENT_SHELL=$(getent passwd "$USER" | cut -d: -f7)
+    if [ "$CURRENT_SHELL" != "$FISH_PATH" ]; then
+        echo "Setting fish as default shell..."
+        chsh -s "$FISH_PATH"
+    fi
+fi
+
 echo ""
 echo "Linux installation complete!"
 echo ""
@@ -84,5 +94,4 @@ echo "All binaries installed to: $LOCAL_BIN"
 echo ""
 echo "Manual steps you may need:"
 echo "  1. Install Nerd Fonts: https://www.nerdfonts.com/"
-echo "  2. Set fish as default shell: chsh -s \$(which fish)"
-echo "  3. Install Ghostty from source or package if available"
+echo "  2. Install Ghostty from source or package if available"
