@@ -16,6 +16,7 @@
     ~/.config/nvim: nvim
     ~/.config/fish: fish
     ~/.config/ghostty: ghostty
+    ~/.config/karabiner: karabiner
     ~/.config/opencode: opencode
     ~/.config/starship.toml: starship/starship.toml
     ~/.claude/settings.json: claude/settings.json
