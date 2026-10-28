@@ -1,6 +1,15 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  // Auto-approve every tool call in every session (edits, bash, web, external
-  // directories, .env reads). A project's own opencode.json can still tighten this.
-  "permission": "allow"
+  // Auto-approve tool calls in every session. Per-tool "*" rules are needed
+  // because OpenCode's built-in per-tool defaults ("ask") beat a bare "allow".
+  // Using objects (not strings) keeps OpenCode's built-in "deny" rules for
+  // .env files, its auth/service files, and remote tunnelling.
+  "permission": {
+    "*": "allow",
+    "bash": { "*": "allow" },
+    "edit": { "*": "allow" },
+    "webfetch": "allow",
+    "external_directory": { "*": "allow" },
+    "doom_loop": "allow"
+  }
 }
