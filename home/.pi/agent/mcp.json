@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "cf-portal": {
+      "url": "https://portal.mcp.cfdata.org/mcp",
+      "description": "Cloudflare internal MCP portal: Jira, Confluence, GitLab, Sentry, Prometheus, PagerDuty, and more"
+    }
+  }
+}

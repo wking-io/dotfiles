@@ -48,9 +48,14 @@ home/.local/share/pi/mcp-auth.json
 home/.pi/agent/extensions/**/node_modules/
 
 
+!home/.pi/agent/settings.json
 !home/.pi/agent/tsconfig.json
 !home/.pi/agent/package.json
 !home/.pi/agent/cloak.json
+# Credential-free config; OAuth tokens and gateway Access tokens stay in
+# mcp-auth.json / auth.json (ignored above).
+!home/.pi/agent/mcp.json
+!home/.pi/agent/private-gateway.json
 !home/.pi/agent/themes/
 !home/.pi/agent/themes/*.json
 !home/.pi/agent/extensions/

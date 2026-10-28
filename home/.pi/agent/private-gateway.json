@@ -1,0 +1,10 @@
+{
+  "profiles": [
+    {
+      "id": "cloudflare",
+      "name": "Cloudflare",
+      "authOrigin": "https://opencode.cloudflare.dev",
+      "inferenceOrigin": "https://gateway.opencode.cloudflare.dev"
+    }
+  ]
+}

@@ -14,6 +14,8 @@ npm workspace for pi agent extensions. TypeScript, ESM-only.
 ├── agent/
 │   ├── settings.json     # Provider, model, theme, packages, interview config
 │   ├── cloak.json        # Secret masking patterns for agent output
+│   ├── mcp.json          # Built-in MCP servers (cf-portal); OAuth tokens live in ignored mcp-auth.json
+│   ├── private-gateway.json # private-gateway profiles (origins only, no model IDs or tokens)
 │   └── extensions/       # Local TypeScript extensions
 │       ├── private-gateway/      # Private inference gateway providers (auth, catalog, dispatch)
 │       ├── pi-skill-toggle/      # Skill discovery, toggle UI, frontmatter patching
@@ -65,7 +67,7 @@ Skills live in `home/.agents/skills/` and stow to `~/.agents/skills/`. Do not co
   "defaultProvider": "<private-provider-id>",
   "defaultModel": "<private-model-id>",
   "defaultThinkingLevel": "high",
-  "theme": "everforest",
+  "theme": "ember-hollow",
   "packages": ["npm:pi-extmgr", "npm:@plannotator/pi-extension"]
 }
 ```
@@ -74,6 +76,7 @@ Skills live in `home/.agents/skills/` and stow to `~/.agents/skills/`. Do not co
 
 Most of `agent/` is gitignored by default. Tracked files are explicitly un-ignored:
 - `agent/settings.json`, `agent/cloak.json`, `agent/tsconfig.json`, `agent/package.json`
+- `agent/mcp.json`, `agent/private-gateway.json` (credential-free; never add tokens or overlay model IDs)
 - `agent/extensions/**` (but `node_modules/` within are re-ignored)
 - `agent/themes/*.json`
 
@@ -81,5 +84,6 @@ Most of `agent/` is gitignored by default. Tracked files are explicitly un-ignor
 
 - Pi Web Tools is installed from `git:github.com/dmmulroy/pi-web-tools`; `web-tools.json` is only Helium browser profile config
 - private-gateway supports native pi `/login` + importing existing OpenCode auth
+- Cloudflare auth on a new machine (after `dot stow`): `pi mcp login cf-portal`, then inside pi run `/login` → Cloudflare and `/private-gateway-doctor`. Tokens land in ignored `agent/mcp-auth.json` and `agent/auth.json`.
 - Treat model IDs supplied through local `private-gateway` overlays as private information: never expose them in version-controlled content.
 - pi-skill-toggle has a full UI layer (overlay, render, view-model)
