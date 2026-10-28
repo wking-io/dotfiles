@@ -200,6 +200,7 @@ TOOL_REGISTRY=(
     "Bun               ;; bun  ;; fn:__install_bun          ;; true  ;; -         ;; true"
     "Vite+             ;; vp   ;; fn:__install_vite_plus    ;; true  ;; -         ;; true"
     "pi                ;; pi   ;; fn:__install_pi           ;; true  ;; -         ;; true"
+    "pi extension deps ;; -    ;; fn:__install_pi_extension_deps ;; true ;; -       ;; false"
     "SSH key           ;; -    ;; fn:__generate_ssh_key     ;; false ;; SKIP_SSH  ;; false"
     "Rex settings      ;; -    ;; fn:__configure_rex        ;; false ;; -         ;; false"
     "Fish shell        ;; -    ;; fn:__setup_fish_shell     ;; false ;; -         ;; false"
@@ -359,6 +360,25 @@ __install_pi() {
         __print_error "Failed to install pi"
         return 1
     fi
+}
+
+# pi loads extensions from their real path under home/.pi, so their npm
+# dependencies must live in home/.pi/node_modules (gitignored); stow then links
+# ~/.pi/node_modules to it. A real ~/.pi/node_modules would block that link.
+__install_pi_extension_deps() {
+    local pi_workspace="${DOTFILES_DIR}/home/.pi"
+
+    __print_info "Installing pi extension dependencies..."
+    if ! (cd "$pi_workspace" && npm install --no-audit --no-fund); then
+        __print_error "Failed to install pi extension dependencies"
+        return 1
+    fi
+
+    if [[ -d "${HOME}/.pi/node_modules" && ! -L "${HOME}/.pi/node_modules" ]]; then
+        rm -rf "${HOME}/.pi/node_modules"
+    fi
+    __stow_dotfiles || return 1
+    __print_success "pi extension dependencies installed"
 }
 
 __install_packages() {
@@ -777,6 +797,7 @@ cmd_update() {
             __print_error "Failed to update pi and configured packages"
             return 1
         fi
+        __install_pi_extension_deps || return 1
     else
         __print_warning "pi is not installed; skipping pi update"
     fi

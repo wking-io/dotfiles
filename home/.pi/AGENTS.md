@@ -54,6 +54,8 @@ Skills live in `home/.agents/skills/` and stow to `~/.agents/skills/`. Do not co
 
 - Installing deps at workspace root for extension-specific needs (use per-package)
 - Committing `node_modules/` (gitignored per-extension)
+- Running `npm install` in `~/.pi` while it is a real directory: pi resolves extension imports from their real path under `home/.pi`, so deps must be in `home/.pi/node_modules` (`~/.pi/node_modules` is a stow link). `dot init`/`dot update` handle this via `__install_pi_extension_deps`
+- Letting `@earendil-works/*` in `package.json` lag the installed pi version; bump them together and run `npm run check`
 - Editing `agent/settings.json` outside dotfiles repo (stow overwrites)
 - Adding runtime state files to git (most of `agent/*` is gitignored, only extensions/settings un-ignored)
 - Duplicating skills under `agent/skills/` — they belong in `home/.agents/skills/`

@@ -24,12 +24,12 @@ export interface GatewayClassifierOverlay {
 /**
  * Cloudflare-hosted Workers AI classifiers whose Pi catalog entries are missing or stale. Entries win
  * over Pi built-ins; a test fails once Pi's catalog matches an entry, so it can be deleted.
- * Source: Workers AI changelog 2026-10-09 (Clef-omni launch, Clef-flash price cut to 24K context).
- * Input stays text-only: Pi's shared System One implementation rejects media inputs.
+ * Source: Workers AI changelog 2026-10-09 (Clef-flash price cut to 24K context). Clef Omni was
+ * removed once Pi 1.4.0 shipped it.
+ * Input modalities come from Pi's entry (text-only when Pi has none); `detectCompat` picks the image field.
  */
 export const GATEWAY_WORKERS_AI_CLASSIFIER_OVERLAY: Readonly<Record<string, GatewayClassifierOverlay>> = {
 	"@cf/cloudflare/clef-flash": { name: "Clef Flash", contextWindow: 24_000, inputCostPerMillion: 0.038 },
-	"@cf/cloudflare/clef-omni": { name: "Clef Omni", contextWindow: 64_000, inputCostPerMillion: 0.15 },
 };
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -65,6 +65,11 @@ export function gatewayWorkersAiRunOutput(body: unknown): Record<string, unknown
 export const GATEWAY_WORKERS_AI_RUN_TRANSPORT: SystemOneTransport = {
 	api: GATEWAY_WORKERS_AI_CLASSIFIER_API,
 	label: LABEL,
+	// Mirrors Pi's cloudflare-workers-ai-system-one transport; model `compat` still wins when set.
+	detectCompat: (model) => ({
+		imageInput: model.id.startsWith("@cf/cloudflare/clef") ? "images" : "assets",
+		sendImageOptInHeader: false,
+	}),
 	url: (model: ClassifierModel<ClassifierApi>) => new URL(`run/${model.id}`, `${model.baseUrl.replace(/\/+$/u, "")}/`),
 	payload: (_model, request) => request,
 	output: gatewayWorkersAiRunOutput,

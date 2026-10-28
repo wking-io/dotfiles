@@ -48,7 +48,7 @@ function classifierBuiltins(backend: GatewayBackend): readonly ClassifierModel<G
 		const builtin = models.get(id);
 		models.set(id, {
 			type: "classifier", provider: "cloudflare-workers-ai", baseUrl: "", ...builtin,
-			id, name: overlay.name, api: GATEWAY_WORKERS_AI_CLASSIFIER_API, input: ["text"], contextWindow: overlay.contextWindow,
+			id, name: overlay.name, api: GATEWAY_WORKERS_AI_CLASSIFIER_API, input: builtin ? [...builtin.input] : ["text"], contextWindow: overlay.contextWindow,
 			cost: { input: overlay.inputCostPerMillion, output: 0, cacheRead: 0, cacheWrite: 0 },
 		});
 	}

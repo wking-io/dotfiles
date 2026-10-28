@@ -257,7 +257,7 @@ test("the classifier overlay adds models Pi lacks and corrects stale Pi metadata
 	const classifiers = new Map(result.value.models.filter((model) => isModelType(model, "classifier")).map((model) => [model.id, model]));
 	const omni = classifiers.get("@cf/cloudflare/clef-omni"); assert.ok(omni);
 	assert.deepEqual({ provider: omni.provider, baseUrl: omni.baseUrl, api: omni.api, input: omni.input, contextWindow: omni.contextWindow, cost: omni.cost }, {
-		provider: profile.id, baseUrl: `${profile.inferenceOrigin}/workers-ai`, api: "cloudflare-workers-ai-system-one", input: ["text"], contextWindow: 64_000,
+		provider: profile.id, baseUrl: `${profile.inferenceOrigin}/workers-ai`, api: "cloudflare-workers-ai-system-one", input: ["text", "image"], contextWindow: 64_000,
 		cost: { input: 0.15, output: 0, cacheRead: 0, cacheWrite: 0 },
 	});
 	const flash = classifiers.get("@cf/cloudflare/clef-flash"); assert.ok(flash);
