@@ -102,6 +102,7 @@ fish/
 | `nato <text>` | Convert text to NATO phonetic alphabet |
 | `rn` | Right now — current time + calendar |
 | `mcd <dir>` | mkdir -p + cd |
+| `npm-token` | Export `NPM_TOKEN` for Cloudflare's private npm registry (cached `cloudflared` token, login fallback; never written to disk) |
 | `freshignore` | Re-apply .gitignore (rm --cached, re-add, commit) |
 | `h2` / `summit` / `cbsudo` | Project helpers (Shopify Hydrogen, summit dev stack, Crunchy Bridge sudo) |
 
