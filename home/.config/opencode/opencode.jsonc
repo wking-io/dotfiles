@@ -1,3 +1,6 @@
 {
-  "$schema": "https://opencode.ai/config.json"
+  "$schema": "https://opencode.ai/config.json",
+  // Auto-approve every tool call in every session (edits, bash, web, external
+  // directories, .env reads). A project's own opencode.json can still tighten this.
+  "permission": "allow"
 }
