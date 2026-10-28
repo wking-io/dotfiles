@@ -1,12 +1,9 @@
+-- Ember Hollow colorscheme lives in colors/ember-hollow.lua; it reuses everforest's highlight groups.
 return {
   'sainnhe/everforest',
   lazy = false,
   priority = 1000,
   config = function()
-    -- Optionally configure and load the colorscheme
-    -- directly inside the plugin declaration.
-    vim.g.everforest_background = 'hard'
-    vim.g.everforest_enable_italic = true
-    vim.cmd.colorscheme 'everforest'
+    vim.cmd.colorscheme 'ember-hollow'
   end,
 }

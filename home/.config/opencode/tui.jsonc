@@ -1,4 +1,5 @@
 {
   "$schema": "https://opencode.ai/tui.json",
-  "theme": "everforest"
+  // Custom theme in themes/ember-hollow.json, matching Rex's built-in "Ember Hollow" theme.
+  "theme": "ember-hollow"
 }

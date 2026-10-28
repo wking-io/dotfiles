@@ -494,8 +494,9 @@ __configure_rex() {
     defaults write "$domain" Workspace.terminalFallbackFontNames -array "Symbols Nerd Font Mono"
     __print_success "Rex font set to Paper Mono with Symbols Nerd Font Mono fallback"
 
-    __print_info "Import the Everforest theme once: Rex > Settings > Appearance > Import Theme File"
-    echo "  ${HOME}/.config/rex/themes/everforest-dark-hard"
+    # Ember Hollow is built into Rex; nvim, fish, OpenCode, and pi themes copy its palette.
+    defaults write "$domain" Workspace.darkThemeID -string "ember-hollow"
+    __print_success "Rex dark theme set to Ember Hollow"
 }
 
 cmd_gen_ssh_key() {

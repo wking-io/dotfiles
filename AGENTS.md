@@ -14,7 +14,6 @@ macOS dev env via GNU Stow. Fish + Neovim + Git + pi.
 │   ├── fish/           # Shell (AGENTS.md)
 │   ├── nvim/           # Editor (AGENTS.md)
 │   ├── git/            # Conditional personal identity
-│   ├── rex/            # Rex terminal: everforest theme file (font set by `dot` via defaults)
 │   ├── karabiner/      # Caps Lock → Esc/Ctrl, fn → Hyper
 │   ├── starship.toml   # Prompt (minimal: directory + branch + ❯❯❯)
 │   └── ripgrep/        # rg config
@@ -93,18 +92,19 @@ dot gen-ssh-key       # Generate ed25519 key by email domain
 | Neovim | `init.lua` | `wking.*` modules + lazy.nvim bootstrap |
 | Git | `config` | No signing, `pull.rebase`, conditional personal include, WARP CA include |
 | Starship | `starship.toml` | Minimal: directory, git branch, ❯❯❯ (no language modules) |
-| Pi | `settings.json` | Private gateway provider, everforest theme |
+| Pi | `settings.json` | Private gateway provider, ember-hollow theme (`home/.pi/agent/themes/ember-hollow.json`) |
 
 ## UNIQUE STYLES
 
-- nvim: kickstart-based, leader `<Space>`, nvim-cmp, everforest theme
+- nvim: kickstart-based, leader `<Space>`, nvim-cmp, ember-hollow colorscheme
 - git: `fomo` = fetch origin main + rebase; `lg` = graph log; `nuke` = discard all changes (keeps other stashes)
-- Theme: Everforest (dark hard) across Rex, fish, Neovim, pi, OpenCode
+- Font: Paper Mono, with Symbols Nerd Font Mono as the fallback for icons (Rex via `dot`'s `__configure_rex`, Neovim GUI via `guifont` in `options.lua`; both font casks are in `packages/bundle`)
+- Theme: Rex's built-in Ember Hollow everywhere. Rex sets it via `dot` (`Workspace.darkThemeID`); fish (`conf.d/ember_hollow_theme.fish`), Neovim (`colors/ember-hollow.lua` + `lua/wking/ember_hollow.lua`), OpenCode (`opencode/themes/ember-hollow.json`), pi, and starship copy its palette
 
 ## NOTES
 
 - `dot update` handles WARP VPN brew API issues automatically
 - Starship shows no language versions, so Vite+ node shims are never probed
 - `secrets.fish` is gitignored — contains env tokens for work services
-- `.pi/agent/*` mostly gitignored; extensions explicitly un-ignored
+- `.pi/agent/*` mostly gitignored; extensions, `mcp.json` (cf-portal), and `private-gateway.json` explicitly un-ignored. Auth steps: `home/.pi/AGENTS.md` → NOTES
 - jj was removed; repo now uses git only

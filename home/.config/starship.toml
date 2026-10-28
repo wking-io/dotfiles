@@ -6,8 +6,9 @@ command_timeout = 200
 format = "[$directory$git_branch]($style)$character"
 
 [character]
-error_symbol = "[✗](bold red)"
-success_symbol = "[❯](bold #A5D6A7)[❯](bold #FFF59D)[❯](bold #FFAB91)"
+# Ember Hollow (Rex theme) green, yellow, accent orange.
+error_symbol = "[✗](bold #e06c4f)"
+success_symbol = "[❯](bold #a3b06a)[❯](bold #e8a75a)[❯](bold #f0955c)"
 
 [directory]
 truncation_length = 2

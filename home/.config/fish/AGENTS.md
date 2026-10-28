@@ -109,5 +109,5 @@ fish/
 
 - `secrets.fish` + `vault-funcs.fish` are gitignored — contain sensitive tokens
 - Vi key bindings (`fish_vi_key_bindings`) are on in interactive shells
-- `everforest_theme.fish` sets shell colors to match the global Everforest theme
+- `ember_hollow_theme.fish` sets shell colors to match Rex's Ember Hollow theme
 - fzf key bindings (Ctrl-T files, Ctrl-R history, Alt-C cd) come from `conf.d/fzf.fish`

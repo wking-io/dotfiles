@@ -5,6 +5,10 @@
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
+-- Terminal nvim uses Rex's font (Paper Mono, Symbols Nerd Font Mono fallback, set by `dot`).
+-- GUI clients like Neovide read guifont: same primary font, with Nerd Font icons as the fallback.
+vim.opt.guifont = 'Paper Mono,Symbols Nerd Font Mono:h14'
+
 -- Editor Stuff
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2

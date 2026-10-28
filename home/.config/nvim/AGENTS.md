@@ -31,7 +31,7 @@ nvim/
 | TypeScript | `lua/wking/plugins/typescript.lua` (typescript-tools, `@effect/language-service`) |
 | Formatter | `lua/wking/plugins/conform.lua` (JS/TS: oxfmt → biome → prettierd/prettier by project config) |
 | Linter | `lua/wking/plugins/lint.lua` (nvim-lint), `null-ls.lua` (phpstan via none-ls) |
-| Theme | `lua/wking/plugins/theme.lua` (everforest, hard background) |
+| Theme | `colors/ember-hollow.lua` (Rex Ember Hollow palette in `lua/wking/ember_hollow.lua`, applied over everforest's highlight groups; loaded by `lua/wking/plugins/theme.lua`) |
 
 ## KEY PLUGINS
 

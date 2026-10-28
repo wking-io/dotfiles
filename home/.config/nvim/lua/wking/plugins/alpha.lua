@@ -7,7 +7,6 @@ return {
   dependencies = {
     'echasnovski/mini.icons',
     'tjdevries/colorbuddy.nvim',
-    'sainnhe/everforest',
   },
   lazy = false,
   keys = {
@@ -23,17 +22,17 @@ return {
   config = function()
     local alpha = require 'alpha'
     local theme = require 'alpha.themes.dashboard'
-    local configuration = vim.fn['everforest#get_configuration']()
-    local palette = vim.fn['everforest#get_palette'](configuration.background, configuration.colors_override)
+    local rex = require('wking.ember_hollow').rex
 
-    vim.api.nvim_set_hl(0, 'AlphaPrimary', { fg = palette.fg[1] })
-    vim.api.nvim_set_hl(0, 'AlphaSecondary', { fg = palette.bg5[1] })
-    vim.api.nvim_set_hl(0, 'AlphaAccent1', { fg = '#F94001' })
-    vim.api.nvim_set_hl(0, 'AlphaAccent2', { fg = '#F96209' })
-    vim.api.nvim_set_hl(0, 'AlphaAccent3', { fg = '#F4730B' })
-    vim.api.nvim_set_hl(0, 'AlphaAccent4', { fg = '#F68A06' })
-    vim.api.nvim_set_hl(0, 'AlphaAccent5', { fg = '#ED9D0B' })
-    vim.api.nvim_set_hl(0, 'AlphaAccent6', { fg = '#FFA80E' })
+    vim.api.nvim_set_hl(0, 'AlphaPrimary', { fg = rex.content })
+    vim.api.nvim_set_hl(0, 'AlphaSecondary', { fg = rex.content_tertiary })
+    -- Crown gradient: Ember Hollow danger -> accent -> bright yellow.
+    vim.api.nvim_set_hl(0, 'AlphaAccent1', { fg = rex.danger })
+    vim.api.nvim_set_hl(0, 'AlphaAccent2', { fg = '#e57a52' })
+    vim.api.nvim_set_hl(0, 'AlphaAccent3', { fg = '#ea8756' })
+    vim.api.nvim_set_hl(0, 'AlphaAccent4', { fg = rex.accent })
+    vim.api.nvim_set_hl(0, 'AlphaAccent5', { fg = '#f2aa69' })
+    vim.api.nvim_set_hl(0, 'AlphaAccent6', { fg = rex.ansi[11] })
 
     -- Manually set this total height based on number of rendered lines configured!
     local total_height = 28
