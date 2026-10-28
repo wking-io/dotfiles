@@ -14,6 +14,9 @@ alias pn 'pnpm'
 alias oc 'clear && opencode auth login https://opencode.cloudflare.dev && opencode mcp auth cf-portal && opencode'
 # Disable automatic completion generation for oc to avoid errors
 complete -c oc -e
+# Jump to the stratus repo and start OpenCode
+alias ocs 'cd $HOME/Developer/work/stratus && oc'
+complete -c ocs -e
 
 # Vite+ manages Node; route one-off package runners through it
 alias bunx 'vpx'

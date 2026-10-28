@@ -1,5 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "model": "anthropic/claude-opus-5-5",
   // Auto-approve tool calls in every session. Per-tool "*" rules are needed
   // because OpenCode's built-in per-tool defaults ("ask") beat a bare "allow".
   // Using objects (not strings) keeps OpenCode's built-in "deny" rules for
