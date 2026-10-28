@@ -1,4 +1,6 @@
 {
   "theme": "ember-hollow",
-  "lastChangelogVersion": "1.4.0"
+  "lastChangelogVersion": "1.4.0",
+  "defaultProvider": "cloudflare",
+  "defaultModel": "claude-opus-5-5"
 }
