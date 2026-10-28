@@ -11,5 +11,14 @@
     "webfetch": "allow",
     "external_directory": { "*": "allow" },
     "doom_loop": "allow"
+  },
+  "mcp": {
+    // Cloudflare internal MCP portal; authenticate with `opencode mcp auth cf-portal`
+    // (the fish `oc` alias does this on every launch).
+    "cf-portal": {
+      "type": "remote",
+      "url": "https://portal.mcp.cfdata.org/mcp",
+      "enabled": true
+    }
   }
 }
