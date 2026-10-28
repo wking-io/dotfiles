@@ -3,7 +3,6 @@
 cask_args appdir: "/Applications"
 
 tap "abue-ammar/tinycast"
-tap "plannotator/tap"
 
 brew "ast-grep"
 brew "btop"

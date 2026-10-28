@@ -10,7 +10,8 @@ alias wr 'wrangler'
 alias p 'pnpm'
 alias pn 'pnpm'
 
-alias oc 'opencode'
+# Cloudflare OpenCode: log in to the internal gateway + cf-portal MCP, then start
+alias oc 'clear && opencode auth login https://opencode.cloudflare.dev && opencode mcp auth cf-portal && opencode'
 # Disable automatic completion generation for oc to avoid errors
 complete -c oc -e
 

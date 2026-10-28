@@ -44,7 +44,7 @@ fish/
 - Private helpers prefix `__` (e.g., `__git.default_branch`)
 - Namespace pattern: `__<namespace>.<function>` (dot-separated)
 - Fallback chains for cross-platform compat (uuidgen -> python3 -> node)
-- Fisher for plugin management (`fish_plugins`)
+- plugin-git is vendored in `functions/` (with local fixes); `fish_plugins` is empty, so `fisher update` installs nothing
 - Use `fish_add_path` not manual `set PATH`
 - Use `set -gx` for global exports
 

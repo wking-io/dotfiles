@@ -242,7 +242,7 @@ dot package remove docker base  # Remove docker from base bundle only
 
 ### Key Configurations
 
-- **Fish Shell**: Custom functions, environment variables, and plugin management via Fisher
+- **Fish Shell**: Custom functions, environment variables, and vendored plugin-git abbreviations
 - **Neovim**: Lua-based configuration with lazy.nvim plugin manager
 - **Git**: Conditional work configuration, custom aliases, GPG signing
 
@@ -251,7 +251,7 @@ dot package remove docker base  # Remove docker from base bundle only
 - **GNU Stow**: Manages symlinks from `home/` to `~`
 - **Modular Design**: Separate configs for different tools
 - **Conditional Loading**: Personal Git identity for `~/Developer/personal/` (work identity is the default)
-- **Plugin Managers**: Each tool uses its own where applicable (lazy.nvim, Fisher)
+- **Plugin Managers**: Each tool uses its own where applicable (lazy.nvim)
 - **Error Resilience**: Package installation continues despite individual failures
 
 ## Environment Setup
@@ -356,7 +356,7 @@ dot stow
 ```bash
 # Ensure Vite+ is installed, then install pi from the tool registry
 curl -fsSL https://vite.plus | bash
-vp install -g @mariozechner/pi-coding-agent
+vp install -g @earendil-works/pi-coding-agent
 ```
 
 ### Getting Help

@@ -353,7 +353,7 @@ __install_pi() {
     fi
 
     __print_info "Installing pi..."
-    if vp install -g @mariozechner/pi-coding-agent; then
+    if vp install -g @earendil-works/pi-coding-agent; then
         __print_success "pi installed successfully"
     else
         __print_error "Failed to install pi"
@@ -373,9 +373,10 @@ __install_packages() {
 
     __print_info "Installing base packages..."
 
-    # Homebrew 6 requires explicit trust before loading third-party tap formulae.
+    # Homebrew 6+ requires explicit trust before loading third-party tap casks/formulae.
     if brew help trust >/dev/null 2>&1; then
-        brew trust plannotator/tap >/dev/null
+        brew tap abue-ammar/tinycast >/dev/null
+        brew trust --tap abue-ammar/tinycast >/dev/null
     fi
 
     if brew bundle --file="${PACKAGES_DIR}/bundle"; then
@@ -678,13 +679,8 @@ __setup_fish_shell() {
         __print_success "Fish is already the default shell"
     fi
     
-    # Install Fisher plugins
-    __print_info "Installing Fish plugins..."
-    if fish -c "fisher install jhillyerd/plugin-git" 2>/dev/null; then
-        __print_success "Fish plugins installed"
-    else
-        __print_warning "Failed to install some Fish plugins"
-    fi
+    # plugin-git (abbreviations + git functions) is vendored in
+    # home/.config/fish/functions with local fixes, so Fisher isn't used for it.
 }
 
 # Command functions
