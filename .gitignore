@@ -1,0 +1,62 @@
+*/**/.undodir
+home/.config/fish/fish_variables
+home/.config/fish/conf.d/secrets.fish
+home/.config/fish/conf.d/vault-funcs.fish
+home/.config/opencode/amp_stuff/
+.envrc
+backups/
+packages/failed_packages_*.txt
+tmp/
+.DS_STORE
+home/.agents/skills/ui/
+home/.agents/skills/account-id-tags/
+
+
+# Python
+__pycache__/
+*.pyc
+
+# jj
+.jj
+
+# opencode
+home/.config/opencode/node_modules/
+home/.config/opencode/plugins/git-ai.ts
+.opencode/plans/
+
+# Plannotator runtime/state (keep config tracked)
+home/.plannotator/*
+!home/.plannotator/config.json
+
+# jj per-repo configs
+home/.config/jj/repos/
+
+# pi agent runtime/state (keep settings + customization resources tracked)
+home/.pi/agent/*
+home/.pi/todos/*
+home/.pi/.pi/todos/*
+.pi/todos/*
+
+# pi MCP adapter runtime/secrets
+home/.pi/agent/mcp-oauth/
+home/.pi/agent/mcp-cache.json
+home/.pi/agent/mcp-npx-cache.json
+home/.pi/agent/mcp-auth.json
+home/.local/share/pi/mcp-auth.json
+
+# pi extensions node_modules
+home/.pi/agent/extensions/**/node_modules/
+
+
+!home/.pi/agent/tsconfig.json
+!home/.pi/agent/package.json
+!home/.pi/agent/cloak.json
+!home/.pi/agent/themes/
+!home/.pi/agent/themes/*.json
+!home/.pi/agent/extensions/
+!home/.pi/agent/extensions/**
+!home/.pi/agent/APPEND_SYSTEM.md
+
+
+# Karabiner-Elements writes backups next to karabiner.json
+home/.config/karabiner/automatic_backups/

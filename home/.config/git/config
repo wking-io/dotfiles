@@ -1,0 +1,55 @@
+[alias]
+	fomo = "!fish -c 'git fetch origin $(__git.default_branch) && git rebase origin/$(__git.default_branch) --autostash'"
+	lg = log --graph --abbrev-commit --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s %C(green)(%cr) %C(blue)<%an>%Creset'
+	# Discard all changes (incl. untracked) via a dropped stash; other stashes are kept
+	# and the dropped one stays recoverable with `git fsck --unreachable`.
+	nuke = "!git add --all && git stash push --quiet --message 'git nuke' && git stash drop --quiet"
+
+[branch]
+	sort = "-committerdate"
+
+[column]
+	ui = "auto"
+
+[core]
+	editor = "nvim"
+	fsmonitor = true
+
+[fetch]
+	prune = true
+	writeCommitGraph = true
+
+[filter "lfs"]
+	clean = "git-lfs clean -- %f"
+	process = "git-lfs filter-process"
+	required = true
+	smudge = "git-lfs smudge -- %f"
+
+[init]
+	defaultBranch = "main"
+
+[pull]
+	rebase = true
+
+[rebase]
+	updateRefs = true
+
+[rerere]
+	enabled = true
+
+[user]
+	email = "wking@cloudflare.com"
+	name = "Will King"
+
+# Personal identity for repos under ~/Developer/personal/
+[includeIf "gitdir:~/Developer/personal/"]
+	path = "~/.config/git/personal_config"
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+# Cloudflare WARP root CA (written by the Cloudflare setup scripts; ignored if missing)
+[include]
+	path = "~/.local/share/cloudflare-warp-certs/gitconfig"
