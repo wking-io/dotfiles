@@ -70,6 +70,7 @@ fish/
 | `wr` | wrangler |
 | `pbc`/`pbp` | pbcopy/pbpaste |
 | `scratch` | nvim with nofile buftype |
+| `wired` / `tired` | `sudo pmset -a disablesleep 1` / `0` (keep awake / restore sleep) |
 
 ## GIT ABBREVIATIONS
 

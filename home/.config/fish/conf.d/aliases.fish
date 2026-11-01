@@ -22,3 +22,7 @@ complete -c ocs -e
 alias bunx 'vpx'
 alias npx 'vpx'
 alias codex 'pi'
+
+# Keep the Mac awake (even lid closed) / restore normal sleep
+alias wired 'sudo pmset -a disablesleep 1'
+alias tired 'sudo pmset -a disablesleep 0'
